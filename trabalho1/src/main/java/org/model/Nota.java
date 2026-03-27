@@ -12,6 +12,19 @@ public class Nota {
 
     private ArrayList<ItemNota> itensNota;
     private Participante participante;
+    private Empresa empresa;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
 
     public ArrayList<ItemNota> getItensNota() {
         return itensNota;
@@ -27,14 +40,6 @@ public class Nota {
 
     public void setParticipante(Participante participante) {
         this.participante = participante;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public Date getData() {
