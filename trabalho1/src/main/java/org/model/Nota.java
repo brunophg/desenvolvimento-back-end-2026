@@ -18,6 +18,10 @@ public class Nota {
         this.id = id;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public Empresa getEmpresa() {
         return empresa;
     }

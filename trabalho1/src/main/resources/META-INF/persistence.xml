@@ -5,8 +5,11 @@
              version="3.0">
 
     <persistence-unit name="trabalho1" transaction-type="RESOURCE_LOCAL">
-        <class></class>
-        <class></class>
+        <class>org.model.Empresa</class>
+        <class>org.model.Nota</class>
+        <class>org.model.Participante</class>
+        <class>org.model.ItemNota</class>
+        <class>org.model.Produto</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
