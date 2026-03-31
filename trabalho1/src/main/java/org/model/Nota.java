@@ -1,17 +1,32 @@
 package org.model;
 
 
+import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 
+@Entity
+@Table (name = "nota")
 public class Nota {
+    @Id
+    @Column (name = "id")
     private Long id;
+
+    @Column (name = "data")
     private Date data;
+    @Column (name = "numero")
     private Integer numero;
 
+    @Transient
     private ArrayList<ItemNota> itensNota;
+
+    @ManyToOne
+    @JoinColumn (name = "id_participante", nullable = false)
     private Participante participante;
+    @ManyToOne
+    @JoinColumn (name = "id_empresa", nullable = false)
     private Empresa empresa;
 
     public void setId(Long id) {

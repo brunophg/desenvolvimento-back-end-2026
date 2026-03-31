@@ -33,7 +33,7 @@ public class EmpresaDao {
     public List<Empresa> findAll() {
         EntityManager entityManager = JpaConnection.getEntityManager();
         try {
-            return entityManager.createQuery("from Curso", Empresa.class).getResultList();
+            return entityManager.createQuery("from Empresa", Empresa.class).getResultList();
         } finally {
             entityManager.close();
         }

@@ -1,17 +1,27 @@
 package org.model;
 
+import jakarta.persistence.*;
 import org.model.Nota;
 
 import java.util.ArrayList;
 
+@Entity
+@Table (name = "empresa")
 public class Empresa {
 
+    @Id
+    @Column (name = "id")
     private long id;
+    @Column (name = "codigo")
     private Integer codigo;
+    @Column (name = "razaosocial")
     private String razaoSocial;
+    @Column (name = "endereco")
     private String endereco;
+    @Column (name = "cnpj")
     private String cnpj;
 
+    @Transient
     private ArrayList<Nota> notas;
 
     public ArrayList<Nota> getNotas() {

@@ -10,7 +10,7 @@ import java.util.function.Function;
 // Centraliza a criação e o fechamento de conexões JPA.
 public final class JpaConnection {
 
-    private static final String PERSISTENCE_UNIT = "aula-dbe-pu";
+    private static final String PERSISTENCE_UNIT = "trabalho1";
     private static EntityManagerFactory entityManagerFactory;
 
     private JpaConnection() {

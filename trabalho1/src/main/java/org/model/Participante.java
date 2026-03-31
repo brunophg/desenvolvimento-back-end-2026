@@ -1,14 +1,26 @@
 package org.model;
 
-import java.util.ArrayList;
+import jakarta.persistence.*;
 
+import java.util.ArrayList;
+@Entity
+@Table(name = "participante")
 public class Participante {
 
+    @Id
+    @Column(name = "id")
     private Long id;
+
+    @Column (name = "codigo")
     private Integer codigo;
+
+    @Column (name = "razaosocial")
     private String razaoSocial;
+
+    @Column (name = "cnpj")
     private String cnpj;
 
+    @Transient
     private ArrayList<Nota> notas;
 
     public Long getId() {

@@ -1,14 +1,26 @@
 package org.model;
 
-import java.math.BigDecimal;
+import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+@Entity
+@Table (name = "itemnota")
 public class ItemNota {
 
+    @Id
+    @Column (name = "id")
     private Long id;
+    @Column (name = "vrunitario")
     private BigDecimal vrUnitario;
+    @Column (name = "quantidade")
     private BigDecimal quantidade;
 
+    @ManyToOne
+    @JoinColumn (name = "id_nota", nullable = false)
     private Nota nota;
+
+    @ManyToOne
+    @JoinColumn (name = "id_produto", nullable = false)
     private Produto produto;
 
     public Produto getProduto() {

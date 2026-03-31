@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class ItemNotaDao {
     private static final AtomicLong ID_SEQ = new AtomicLong(2000L);
 
-    // Salva uma nova empresa.
+    // Salva uma nova.
     public ItemNota create(ItemNota itemNota) {
         return JpaConnection.executeInTransaction(entityManager -> {
             entityManager.persist(itemNota);
@@ -18,7 +18,7 @@ public class ItemNotaDao {
         });
     }
 
-    // Busca uma empresa pelo ID.
+    // Busca pelo ID.
     public ItemNota findById(long id) {
         EntityManager entityManager = JpaConnection.getEntityManager();
         try {
@@ -28,7 +28,7 @@ public class ItemNotaDao {
         }
     }
 
-    // Lista todos as empresas.
+    // Lista todos.
     public List<ItemNota> findAll() {
         EntityManager entityManager = JpaConnection.getEntityManager();
         try {
@@ -38,12 +38,12 @@ public class ItemNotaDao {
         }
     }
 
-    // Atualiza os dados de uma empresa.
+    // Atualiza os dados.
     public ItemNota update(ItemNota itemNota) {
         return JpaConnection.executeInTransaction(entityManager -> entityManager.merge(itemNota));
     }
 
-    // Remove uma empresa pelo ID e informa se a remoção ocorreu.
+    // Remove pelo ID e informa se a remoção ocorreu.
     public boolean deleteById(long id) {
         return JpaConnection.executeInTransaction(entityManager -> {
             ItemNota itemNota = entityManager.find(ItemNota.class, id);
@@ -55,7 +55,7 @@ public class ItemNotaDao {
         });
     }
 
-    // Remove todos as empresas e retorna a quantidade apagada.
+    // Remove todos e retorna a quantidade apagada.
     public int deleteAll() {
         return JpaConnection.executeInTransaction(entityManager ->
                 entityManager.createQuery("delete from ItemNota").executeUpdate()
