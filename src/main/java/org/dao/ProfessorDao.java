@@ -1,8 +1,8 @@
 package org.dao;
 
 import jakarta.persistence.EntityManager;
-import org.aula.config.JpaConnection;
-import org.aula.model.Professor;
+import org.config.JpaConnection;
+import org.model.Professor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
