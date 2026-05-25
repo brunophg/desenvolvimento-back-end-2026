@@ -1,5 +1,7 @@
 package org.api.inventario;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.dao.InventarioDao;
 import org.dao.ItemDao;
 import org.dao.JogadorDao;
@@ -17,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/inventarios")
+@Tag(name = "Inventarios", description = "Operacoes de cadastro e consulta de Inventarios")
 public class InventarioController {
 
     private final InventarioDao inventarioDao;
@@ -30,6 +33,7 @@ public class InventarioController {
     }
 
     @GetMapping
+    @Operation(summary = "Listar Inventarios", description = "Retorna todos as Inventarios cadastrados.")
     public List<InventarioResponse> listarTodos() {
         return inventarioDao.findAll()
                 .stream()
@@ -38,6 +42,7 @@ public class InventarioController {
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Buscar inventario por ID", description = "Retorna uma inventario especifica pelo identificador.")
     public InventarioResponse buscarPorId(@PathVariable long id) {
         Inventario inventario = inventarioDao.findById(id);
         if (inventario == null) {
@@ -47,11 +52,13 @@ public class InventarioController {
     }
 
     @GetMapping("/next-id")
+    @Operation(summary = "Obter proximo ID de inventario", description = "Retorna o proximo identificador sequencial disponivel para inventario.")
     public long proximoId() {
         return inventarioDao.nextId();
     }
 
     @PostMapping
+    @Operation(summary = "Criar inventario", description = "Cria uma nova inventario. Se o ID nao for informado, o sistema gera o proximo ID.")
     public ResponseEntity<InventarioResponse> criar(@RequestBody InventarioRequest request) {
         Inventario inventario = request.toEntity();
         if (request.id() == null) {
@@ -74,6 +81,7 @@ public class InventarioController {
     }
 
     @PostMapping("/update")
+    @Operation(summary = "Atualizar inventario", description = "Atualiza uma inventario existente a partir do ID informado no corpo da requisicao.")
     public InventarioResponse atualizar(@RequestBody InventarioRequest request) {
         if (request.id() == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Id obrigatorio para atualização");
@@ -96,6 +104,7 @@ public class InventarioController {
     }
 
     @PostMapping("/{id}/delete")
+    @Operation(summary = "Remover inventario por ID", description = "Remove uma inventario existente pelo identificador.")
     public ResponseEntity<Void> removerPorId(@PathVariable long id) {
         if (!inventarioDao.deleteById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Inventario nao encontrado");
@@ -104,6 +113,7 @@ public class InventarioController {
     }
 
     @PostMapping("/delete-all")
+    @Operation(summary = "Remover todos os Inventarios", description = "Exclui todos os Inventarios cadastrados e retorna a quantidade removida.")
     public int removerTodos() {
         return 0;
     }
