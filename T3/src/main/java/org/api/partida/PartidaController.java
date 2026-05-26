@@ -54,6 +54,7 @@ public class PartidaController {
     public long proximoId() {
         return partidaDao.nextId();
     }
+
     @PostMapping
     @Operation(summary = "Criar partida", description = "Cria uma nova partida. Se o ID nao for informado, o sistema gera o proximo ID.")
     public ResponseEntity<PartidaResponse> criar (@RequestBody PartidaRequest request) {
